@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    :root {
+        --yellow: {%themeColor%};
+        /* --yellow: #ffc518; */
+        /* --yellow: #3c124a; */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        color: rgb(23, 23, 81);
+        background-color: rgb(10, 10, 40);
+    }
+
+    .bg {
+        position: absolute;
+        height: 0px;
+        width: 0px;
+        /* left: 193px; */
+        bottom: -100px;
+        z-index: -9;
+        /* background-color: red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bg div {
+        position: absolute;
+        /* transform-origin: center; */
+        aspect-ratio: 1;
+        background-color: var(--yellow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* bottom: 0;
+        right: 0; */
+        border-radius: 40%;
+        width: 800px;
+    }
+
+    #wave1 {
+        /* width: 800px; */
+        animation: 25s infinite linear rotateclk;
+        /* background-color: rgb(0, 0, 255); */
+        /* left: 100px;
+        top: -20px; */
+    }
+
+    #wave2 {
+        /* width: 800px; */
+        animation: 20s infinite linear rotateAclk;
+        /* background-color: red; */
+        /* left: -100px; */
+    }
+
+    #wave3 {
+        animation: 15s infinite linear rotateclk;
+        /* background-color: rgb(30, 255, 0); */
+        top: -10px;
+        opacity: 0.7;
+    }
+
+
+
+    @keyframes rotateclk {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes rotateAclk {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+
+    @keyframes moveLeftRight {
+        0% {
+            transform: translateX(-20px);
+        }
+
+        50% {
+            transform: translateX(20px);
+        }
+
+        100% {
+            transform: translateX(-20px);
+        }
+    }
+
+    @keyframes moveUpDown {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-3px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 400;
+    }
+
+    .container {
+        position: relative;
+        background-color: #ffffff;
+        width: 95vw;
+        max-width: calc(9*95vh/16);
+        max-height: 95vh;
+        aspect-ratio: 9/16;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        z-index: -10;
+    }
+
+
+
+    .main {
+        aspect-ratio: 9/16;
+        border-radius: 25px;
+        width: 95%;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #ffffffad;
+    }
+
+
+    .info {
+        text-align: center;
+    }
+
+    #icon {
+        max-width: 150px;
+        width: 30vw;
+    }
+
+    .temp {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    #temperature {
+        font-size: 5rem;
+    }
+
+    #location {
+        display: flex;
+    }
+
+    @media (min-height: 950px) {
+        .bg div {
+            width: 1000px;
+        }
+    }
+
+    @media (min-height: 1200px) {
+        .bg div {
+            width: 1300px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 500;
+        }
+
+        #temperature {
+            font-size: 9rem;
+        }
+
+        h3 {
+            font-size: 3rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.5rem;
+        }
+
+        #icon {
+            max-width: 250px;
+            width: 30vw;
+        }
+
+        #location img {
+            width: 3rem;
+        }
+
+    }
+
+
+    .rotateIcon {
+        animation: 60s infinite linear rotateclk;
+    }
+
+    .moveLeftRightAnim {
+        animation: moveLeftRight 10s ease-in-out infinite;
+    }
+
+    .moveUpDownAnim {
+        animation: moveUpDown 2s ease-out infinite;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="bg">
+            <div id="wave1">
+                <div id="wave2">
+                    <div id="wave3"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="main">
+            <div class="info">
+                <h3 id="location">
+                    <div id="location" class="moveUpDownAnim">{%locationIcon%}</div>{%cityName%} , {%countryCode%}
+                </h3>
+                <!-- <h3 id="location"><img src="{%locationIcon%}" alt="location" class="moveUpDownAnim">{%cityName%}</h3> -->
+                <h4 id="date">Mon,20 March</h4>
+            </div>
+            <div id="icon" class="{%iconAnimationClass%}">{%weatherIcon%}</div>
+            <!-- <img id="icon" src="{%weatherIcon%}" alt="WeatherIcon" class="rotateIcon"></img> -->
+            <div class="temp">
+                <h1 id="temperature">&ThickSpace;{%temperatureValue%}&deg;</h1>
+                <h3 id="weather">{%weather%}</h3>
+                <h5 id="feelsLike">Feels like {%feelLikeTemp%}&deg;</h5>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const date = document.getElementById("date");
+
+        const dayArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        let currentDate = new Date();
+        date.innerText = `${dayArray[currentDate.getDay()]},${currentDate.getDate().toString().padStart(2, "0")} ${monthArray[currentDate.getMonth()]}`;
+
+        if (currentDate.getHours() > 18 || currentDate.getHours() < 5) {
+            document.querySelector(".container").style.backgroundColor = "#3c124a";
+            document.querySelector(".main").style.backgroundColor = "#3c124aad";
+            document.body.style.color = "white";
+        } else {
+            document.querySelector(".container").style.backgroundColor = "white";
+            document.querySelector(".main").style.backgroundColor = "#ffffffad";
+            document.body.style.color = "rgb(23, 23, 81)";
+        }
+        // console.log(currentDate.getHours());
+        // console.log(`${dayArray[currentDate.getDay()]},${currentDate.getDate().toString().padStart(2,"0")} ${monthArray[currentDate.getMonth()]}`);
+    </script>
+</body>
+
+</html>

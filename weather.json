@@ -1,0 +1,20 @@
+[
+    {
+        "name":"Rain",
+        "icon":"svg/Rain.svg",
+        "themeColor": "#2f2855",
+        "animationClass": "moveLeftRightAnim"
+    },
+    {
+        "name":"Clear",
+        "icon":"svg/Clear.svg",
+        "themeColor": "#ffc518",
+        "animationClass": "rotateIcon"
+    },
+    {
+        "name":"Clouds",
+        "icon":"svg/Clouds.svg",
+        "themeColor": "#03C4F2",
+        "animationClass": "moveLeftRightAnim"
+    }
+]
